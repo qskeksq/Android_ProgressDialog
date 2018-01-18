@@ -3,6 +3,8 @@ Api level 26 부터 ProgressDialog를 사용할 수 없기 때문에 ProgressBar
 
 ## ConstraintLayout
 
+### 띄우기
+
 ```java
 container = (ConstraintLayout) view.findViewById(R.id.container);
 
@@ -30,10 +32,26 @@ set.constrainWidth(progressBar.getId(), 200);
 
 // 7. layout에 적용
 set.applyTo(container);
+
+// 8. 터치 불가능
+getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+```
+
+### 제거
+```java
+// 터치 조정
+getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+// 뷰에서 제거
+mapListContainer.removeView(progressBar);
+
 ```
 
 
+
 ## RelativeLayout
+
+### 띄우기
 
 ```java
 container = (RelativeLayout) view.findViewById(R.id.container);
@@ -47,4 +65,18 @@ params.addRule(RelativeLayout.CENTER_IN_PARENT);
 
 // 3. addView
 container.addView(progressBar, params);
+
+// 4. 터치 불가능
+getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+```
+
+
+### 제거
+```java
+// 터치 조정
+getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+// 뷰에서 제거
+mapListContainer.removeView(progressBar);
+
 ```
